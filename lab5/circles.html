@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            .circle{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 50px;
+                left: 150px;
+                font-size: 20px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(172, 124, 61);
+                font-size: 25px;
+                transition: opacity 5s;
+
+            }
+            .circle2{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 80px;
+                left: 250px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(245, 192, 122);
+                transition: opacity 5s;
+            }
+            .circle3{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;                
+                position: absolute;
+                top: 250px;
+                left: 500px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(94, 76, 52);
+                transition: opacity 5s;
+            }
+            .circle4{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 400px;
+                left: 800px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(84, 197, 112);
+                transition: opacity 5s;
+            }
+            .circle5{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 300px;
+                left: 350px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(163, 197, 84);
+                transition: opacity 5s;
+            }
+            .circle6{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 200px;
+                left: 700px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(26, 61, 35);
+                transition: opacity 5s;
+            }
+            .circle7{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 700px;
+                left: 1100px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(23, 108, 189);
+                transition: opacity 5s;
+            }
+            .circle8{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 200px;
+                left: 1500px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(151, 83, 196);
+                transition: opacity 5s;
+            }
+            .circle9{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 800px;
+                left: 50px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(172, 36, 36);
+                transition: opacity 5s;
+            }
+            .circle10{
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;  
+                position: absolute;
+                top: 500px;
+                left: 1250px;
+                height: 50px;
+                width: 50px;
+                border: solid;
+                border-radius: 50px;
+                background-color: rgb(253, 93, 1);
+                transition: opacity 5s;
+            }
+            input{
+                position: absolute;
+                bottom: 50px;
+                width: 250px;
+                left: 500px;
+            }
+        </style>
+
+        <script>
+            function clearContent(circle){
+                circle.style.opacity = 0; 
+                setTimeout(function() {
+                    circle.style.display = "none";
+                }, 2000); 
+            }
+            function showCircles(){
+                let circles = document.querySelectorAll('.full > div');
+                circles.forEach(circle => {
+                    circle.style.display = "flex";
+                    circle.style.opacity = 1;
+                });
+            }
+        </script>
+        <body>
+            <header onclick="showAuthor()">
+                НГТУ, ФБ, Лабораторная работа 5
+                <hr>
+                </header>        
+        <main>
+            <div class="full">
+                <div class="circle" onclick="clearContent(this)">
+                    1
+                </div>
+        
+                <div class="circle2" onclick="clearContent(this)">
+                    2
+                </div>
+        
+                <div class="circle3" onclick="clearContent(this)">
+                    3
+                </div>
+        
+                <div class="circle4" onclick="clearContent(this)">
+                    4
+                </div>
+        
+                <div class="circle5" onclick="clearContent(this)">
+                    5
+                </div>
+        
+                <div class="circle6" onclick="clearContent(this)">
+                    6
+                </div>
+        
+                <div class="circle7" onclick="clearContent(this)">
+                    7
+                </div>
+        
+                <div class="circle8" onclick="clearContent(this)">
+                    8
+                </div>
+        
+                <div class="circle9" onclick="clearContent(this)">
+                    9
+                </div>
+        
+                <div class="circle10" onclick="clearContent(this)">
+                    10
+                </div>
+            </div>
+            <input type="button" value="Рестарт" id="rst" onclick="showCircles()">
+        </main>
+
+        <footer>
+            </hr>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>
