@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            .container{
+                width: 560px;
+                height: 600px;
+                border: solid;
+                text-align: center;
+                border-radius: 5px;
+                color: rgb(129, 23, 50);
+            }
+            .btn{
+                margin-top: 30px;
+            }
+            .info{
+                margin-top: 50px;
+            }
+            .text1{
+                font-size:25px
+            }
+
+            .btn2{
+                margin-top: 50px;
+                margin-left: -15px;
+            }
+            .inpt2{
+                width: 250px;
+            }
+        </style>
+
+        <script>
+            function showSum(){
+                let apple = document.getElementById('apple');
+                let pears = document.getElementById('pears');
+                let oranges = document.getElementById('oranges');
+                let melons = document.getElementById('melons');
+                let a = parseInt(apple.value);
+                let p = parseInt(pears.value);
+                let o = parseInt(oranges.value);
+                let m = parseInt(melons.value);
+                let result = (a*100) + (p*80) + (o*150) + (m*300);
+                let output = document.getElementById('output');
+                output.innerHTML = 'Общая цена: ' + result;
+            }
+
+            function clearShow(){
+                let apple = document.getElementById('apple');
+                let pears = document.getElementById('pears');
+                let oranges = document.getElementById('oranges');
+                let melons = document.getElementById('melons');
+                let output = document.getElementById('output');
+
+                apple.value = "";
+                pears.value = "";
+                oranges.value = "";
+                melons.value = "";
+
+                output.innerHTML = '';
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 5
+            <hr>
+            </header>
+
+        <main>
+            <div class="container">
+                <h1> Корзина товаров</h1>
+                <div class="text1">
+                    Яблоки (100р/шт):
+                </div>
+                <div class="inpt">
+                    <input type="number"  placeholder = "Сколько?"  min="0" oninput="value = Math.max(value, 0)" id="apple">
+                </div>
+                <div class="info">
+                    <div class="text1">
+                        Груши (80р/шт):
+                    </div>
+                    <div class="inpt">
+                        <input type="number" placeholder = "Сколько?" min="0" oninput="value = Math.max(value, 0)" id="pears">
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="text1">
+                        Апельсины (150р/шт):
+                    </div>
+                    <div class="inpt">
+                        <input type="number" placeholder = "Сколько?" min="0" oninput="value = Math.max(value, 0)" id="oranges">
+                    </div>
+                </div>
+
+                <div class="info">  
+                    <div class="text1">
+                        Дыни (300р/шт):
+                    </div>
+                    <div class="inpt">
+                        <input type="number" placeholder = "Сколько?" min="0" oninput="value = Math.max(value, 0)" id="melons">
+                    </div>
+                    <div class="btn">
+                        <input type="button" value="Расчитать" onclick="showSum()"> 
+                        <div id="output"></div>
+                    </div>
+                    <div class="btn2" >
+                        <input id="btn2" class="inpt2" type="reset" value="очистить" onclick="clearShow()">
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </main>
+
+        <footer>
+            </hr>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>
