@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            header{
+                cursor: pointer;
+            }
+            footer{
+                cursor: pointer;
+            }
+            .message{
+                cursor: pointer;
+                display: inline-block;
+                width: 250px;
+                height: 30px;
+                border-radius: 5%;
+                border: 5px solid;
+                text-align: center;
+                line-height: 30px;
+            }
+            #️output{
+                border: 1px solid;
+                width: 300px;
+                height: 40px;
+
+            }
+        </style>
+        <script>
+            function showSum() {
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a + b;
+                alert('сумма ' + a + ' и ' + b + ' равна ' + result);
+            }
+            function showAuthor(){
+                let author = "Австор страницы: \nТокарский Илья Андреевич";
+                alert(author)
+            }
+            function showhello(){
+                let author = "Проснулись \nулыбнулись";
+                alert(author)
+            }
+            function difference(){
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a - b;
+                alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+            }
+            function composition(){
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a * b;
+                alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+            }
+            function division(){
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a / b;
+                alert('Деление ' + a + ' и ' + b + ' равно ' + result);
+            }
+
+            {
+                function changeOutput(buttonNum, backColor, textColor, textBorder){
+                    let output = document.getElementById('output');
+                    output.innerHTML = "Нажата кнопка" + buttonNum;
+                    output.style.backgroundColor = backColor;
+                    output.style.color = textColor;
+                    output.style.borderStyle = textBorder;
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 5
+            <hr>
+            </header>
+
+        <main>
+            <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+            Второе число: <input type="number" value="7891" id="numberB"><br>
+            <div class="message" onclick="showSum()">Найти сумму чисел</div>
+            <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+            <div class="message" onclick="difference()">Найти разность чисел</div>
+            <div class="message" onclick="composition()">Найти произведение чисел</div>
+            <div class="message" onclick="division()">Найти деление чисел</div>
+
+            <div>
+                <input type="button" value="Кнопка 1" onclick="changeOutput(1, '#A52A2A', 'yellow', 'outset')">
+                <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime','dotted')">
+                <input type="button" value="Кнопка 3" onclick="changeOutput(3, '#F0808080', '#008080','solid')">
+                <input type="button" value="Кнопка 4" onclick="changeOutput(4, '#BC8F8F', '#9400D3','double')">
+            </div>
+            <div id="output"></div>
+
+        </main>
+
+        <footer onclick="showhello()">
+            </hr>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024
+        </footer>
+        
+    </body>
+
+
+
+</html>
