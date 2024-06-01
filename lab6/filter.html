@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            #wear {
+                position: relative;
+                z-index: 1;
+                width: 500px; /* Ширина изображения */
+            }
+        </style>
+    </head>
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+    
+        <script>
+            function filter() {
+                let color = document.getElementById('wear-color').value;
+                let type = document.getElementById('wear-type').value;
+                let wearImg = document.getElementById('wear');
+    
+                if (color == 'Красный' && type == 'Футболка') {
+                    wearImg.src = 'raf_footba_1.jpg'            } 
+                else if (color == 'Красный' && type == 'штаны') {
+                    wearImg.src = 'vetements_pants.jpg';
+                } 
+                else if (color == 'Красный' && type == 'кроссовки') {
+                    wearImg.src = 'Raf_simons_X_Adidas.jpg';
+                } 
+                else if (color == 'Белый' && type == 'Футболка') {
+                    wearImg.src = 'Margiela_T-shirt.jpg';
+                } 
+                else if (color == 'Белый' && type == 'штаны') {
+                    wearImg.src = 'Balenciaga_pants.jpg';
+                } 
+                else if (color == 'Белый' && type == 'кроссовки') {
+                    wearImg.src = 'Rick-Owens_HEXA.jpg';
+                } 
+                else if (color == 'Чёрный' && type == 'Футболка') {
+                    wearImg.src = 'CDG.jpg';
+                } 
+                else if (color == 'Чёрный' && type == 'штаны') {
+                    wearImg.src = 'balenci_X_adidas.jpg';
+                } 
+                else if (color == 'Чёрный' && type == 'кроссовки') {
+                    wearImg.src = 'balenci.jpg';
+                } 
+                else {
+                    wearImg.src = ''; // Если не выбрано, очистить изображение
+                }
+            }
+        </script>
+    
+        <main>
+            <div>
+                Цвет одежды:
+                <select id="wear-color">
+                    <option>Красный</option>
+                    <option>Белый</option>
+                    <option>Чёрный</option>
+                </select><br>
+    
+                Тип одежды:
+                <select id="wear-type">
+                    <option>Футболка</option>
+                    <option>штаны</option>
+                    <option>кроссовки</option>
+                </select><br>
+    
+                <button onclick="filter()">ОК</button><br>
+                <img id="wear">
+            </div>
+        </main>
+    
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+    </body>
+    </html>
