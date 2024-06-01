@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+    </head>
+
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+        <style>
+            .game {
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                width: 80%;
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            .game button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+    
+            .game button:hover {
+                background-color: #0056b3;
+            }
+    
+            .game input[type="number"] {
+                width: 100px;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+    
+            .game #result {
+                margin-top: 10px;
+                font-weight: bold;
+                }
+    
+            #help-block {
+                margin-top: 20px;
+                padding: 10px;
+                background-color: #f2f2f2;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+    
+            #rules {
+                display: none;
+                margin-top: 10px;
+                padding-left: 20px;
+            }
+    
+            #hide-rules-btn {
+                display: none;
+            }
+    
+    
+        </style>
+        <script>
+            let number;
+            let count = 0;
+            function startGame() {
+                number = Math.floor(Math.random() * 100) + 1;
+                count = 0;
+                let screens = document.getElementsByClassName('game');
+                screens[0].style.display = 'none';
+                screens[1].style.display = 'block';
+            }
+    
+            function guess() {
+                count++;
+                let input = document.getElementById('user-number');
+                let userNumber = parseInt(input.value);
+                let message = document.getElementById('result');
+                if (userNumber === '') { // Проверка на пустое поле
+                    document.getElementById('result').innerHTML = 'Пожалуйста, введите число!';
+                    return; // Выходим из функции, если поле пустое
+                }
+    
+                if (isNaN(userNumber)) { // Проверка на ввод не числа
+                    document.getElementById('result').innerHTML = 'Вы ввели некорректное значение!';
+                    return; // Выходим из функции, если введено не число
+                }
+                userNumber = parseInt(userNumber); // Преобразуем введенное значение в число
+    
+                  // Проверка на диапазон
+                if (userNumber < 1 || userNumber > 100) {
+                    message.innerHTML = 'Число должно быть в диапазоне от 1 до 100!';
+                    return; // Выходим из функции, если число не в диапазоне
+                }
+    
+                if (userNumber > number) {
+                    message.innerHTML = 'Вы ввели слишком большое число';
+                }
+                else if (userNumber < number) {
+                    message.innerHTML = 'Вы ввели слишком маленькое число';
+                }
+                else {
+                    message.innerHTML = 'Поздравляем, вы угадали!';
+                    let screens = document.getElementsByClassName('game');
+                    screens[1].style.display = 'none';
+                    screens[2].style.display = 'block';
+                    document.getElementById('number').innerHTML = number;
+                    document.getElementById('try-count').innerHTML = count;
+                }
+            }
+            function again() {
+                // Скрываем третий экран
+                let screens = document.getElementsByClassName('game');
+                screens[2].style.display = 'none';
+    
+                // Показываем второй экран
+                screens[1].style.display = 'block';
+    
+                // Загадываем новое число
+                number = Math.floor(Math.random() * 100) + 1;
+    
+                // Обнуляем число попыток
+                count = 0;
+    
+                // Очищаем блок "result"
+                let resultElement = document.getElementById('result');
+                resultElement.innerHTML = '';
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+            const showRulesBtn = document.getElementById('show-rules-btn');
+            const hideRulesBtn = document.getElementById('hide-rules-btn');
+            const rules = document.getElementById('rules');
+    
+                showRulesBtn.addEventListener('click', () => {
+                    showRulesBtn.style.display = 'none';
+                    rules.style.display = 'block';
+                    hideRulesBtn.style.display = 'block';
+                });
+    
+                hideRulesBtn.addEventListener('click', () => {
+                    showRulesBtn.style.display = 'block';
+                    rules.style.display = 'none';
+                    hideRulesBtn.style.display = 'none';
+                });
+            });
+        </script>
+    
+        <main>
+            <div class="game">
+      <button onclick="startGame()">
+        Сыграть в игру
+      </button>
+    </div>
+    
+    
+            <div class="game" style="display: none;">
+                <h1>Угадай число!</h1>
+                <div>
+                    Задумано число от 1 до 100. Угадайте, какое?<br>
+                    <input type="number" value="" min="1" max="100" id="user-number"><br>
+                    <button onclick="guess()">Угадать</button>
+                    <div id="result"></div>
+                </div>
+            </div>
+    
+            <div class="game" style="display: none;">
+                <h1>Поздравляем, вы выиграли!</h1>
+                <div>
+                    Задуманное число: <span id="number"></span>
+                </div>
+                <div>
+                    Количество попыток: <span id="try-count"></span>
+                </div>
+                <div>
+                    <button onclick="again()">Сыграть еще раз</button>
+                </div>
+            </div>
+    
+            <div id="help-block">
+                <button id="show-rules-btn">Показать правила игры</button>
+                <div id="rules" style="display: none;">
+                  <button id="hide-rules-btn">Скрыть правила игры</button>
+                  <ol type="I">
+                    <li>Компьютер загадывает случайное число в диапазоне от 1 до 100.</li>
+                    <li>Игрок вводит число в поле ввода и нажимает кнопку "Угадать".</li>
+                    <li>Если введенное число меньше загаданного, выводится подсказка "Вы ввели слишком маленькое число".</li>
+                    <li>Если введенное число больше загаданного, выводится подсказка "Вы ввели слишком большое число".</li>
+                    <li>Если число угадано, выводится поздравление, и игра заканчивается.</li>
+                  </ol>
+                </div>
+              </div>
+              
+    
+        </main>
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+    </body>    
+
+
+</html>
