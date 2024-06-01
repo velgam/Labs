@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+    </head>
+    <body>
+        <h1>Корзина товаров</h1>
+        <label for="balance">Мой баланс:</label>
+        <input type="number" id="balance" value="1000">
+        <br><br>
+        <label for="item1">Яйца:</label>
+        <input type="number" id="item1" value="1"> Цена: 100
+        <br>
+        <label for="item2">Хлеб:</label>
+        <input type="number" id="item2" value="2"> Цена: 200
+        <br>
+        <label for="item3">Колбаса:</label>
+        <input type="number" id="item3" value="0"> Цена: 300
+        <br>
+        <label for="item4">Сыр:</label>
+        <input type="number" id="item4" value="0"> Цена: 400
+        <br>
+        <label for="item5">Сахар:</label>
+        <input type="number" id="item5" value="0"> Цена: 500
+        <br>
+        <label for="item6">Соль:</label>
+        <input type="number" id="item6" value="0"> Цена: 600
+        <br>
+        <label for="item7">Виноград:</label>
+        <input type="number" id="item7" value="0"> Цена: 700
+        <br><br>
+        <button onclick="calculateTotal()">OK</button>
+        <p id="result"></p>
+    
+        <script>
+            function calculateTotal() {
+                const balance = parseFloat(document.getElementById('balance').value);
+                const item1 = parseFloat(document.getElementById('item1').value) * 100;
+                const item2 = parseFloat(document.getElementById('item2').value) * 200;
+                const item3 = parseFloat(document.getElementById('item3').value) * 300;
+                const item4 = parseFloat(document.getElementById('item4').value) * 400;
+                const item5 = parseFloat(document.getElementById('item5').value) * 500;
+                const item6 = parseFloat(document.getElementById('item6').value) * 600;
+                const item7 = parseFloat(document.getElementById('item7').value) * 700;
+    
+                const total = item1 + item2 + item3 + item4 + item5 + item6 + item7;
+    
+                const resultElement = document.getElementById('result');
+    
+                if (item1 < 0 || item2 < 0 || item3 < 0 || item4 < 0 || item5 < 0 || item6 < 0 || item7 < 0) {
+                    resultElement.textContent = 'Ошибка: количество товара не может быть отрицательным.';
+                } else if (total === 0) {
+                    resultElement.textContent = 'Нужно выбрать хотя бы один товар.';
+                } else if (total > balance) {
+                    resultElement.textContent = `Общая сумма (${total}) превышает имеющийся баланс (${balance}).`;
+                } else {
+                    resultElement.textContent = `Общая сумма: ${total}. Оформление товара прошло успешно.`;
+                }
+            }
+        </script>
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+    </body>
+
+    </html>
+    
