@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 8</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="get-days-count.js"></script>
+
+        <style>
+    
+    
+            main {
+                padding: 20px;
+            }
+    
+            .frame {
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+    
+            button {
+                background-color: #007BFF;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+    
+            button:hover {
+                background-color: #0056b3;
+            }
+    
+    
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 8
+        </header>
+    
+        <main>
+            <div class="frame">
+                <div>
+                    <label for="birthday">Дата рождения: <input type="date" id="birthday"></label>
+                </div>
+                <div>
+                    <button onclick="showDaysCount()">Показать число дней</button>
+                </div>
+                <div id="count-days"></div>
+                <button onclick="clearInput()">Очистить поля ввода и выводы</button>
+            </div>
+        </main>
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>
