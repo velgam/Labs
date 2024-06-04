@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БАНК САРАТОВ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="fav.ico">
+</head>
+<style>
+    .currency-calculator{
+        margin-left: 70px;
+    }
+    button{
+
+        font-family: 'montserrat', sans-serif;
+        background-color: #63548d; /* Зеленый цвет фона */
+        border: none; /* Убираем границу */
+        color: white; /* Белый текст */
+        padding: 7px 15px; /* Поля вокруг текста */
+        text-align: center; /* Выравнивание текста по центру */
+        text-decoration: none; /* Убираем подчеркивание */
+        display: inline-block; 
+        font-size: 16px; 
+        margin: 4px 2px; 
+        cursor: pointer; 
+        transition-duration: 0.4s;
+    }
+</style>
+<body>
+    <header class="header">
+        <img src="logo.png"  class="logo">
+    </header>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li><a href="osnova.html">О компании</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="currency.html" class="active">Курс валют</a></li>
+                <li><a href="contacts.html">Контактные данные</a></li>
+                <li><a href="videos.html">Видео</a></li>
+            </ul>
+        </div>
+    
+        <div class="currency-calculator">
+            <h2>Курс валют</h2>
+            <h3>Гонконгский доллар (HKD) к Российскому рублю (RUB)</h3>
+            <p id="hkd-rate">Загрузка...</p>
+            <form id="currency-form">
+                <label for="amount">Введите сумму в рублях:</label>
+                <input type="number" id="amount" min="0" step="0.01" required>
+                <button type="button" id="convert-to-hkd">Перевести в HKD</button>
+                <br>
+                <label for="hkd-amount">Введите сумму в HKD:</label>
+                <input type="number" id="hkd-amount" min="0" step="0.01" required>
+                <button type="button" id="convert-to-rub">Перевести в RUB</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 БАНК САРАТОВ. Все права защищены.</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            // Загрузка курса HKD при загрузке страницы
+            loadHKDRate();
+
+            // Обработка формы
+            $('#convert-to-hkd').on('click', function() {
+                var amount = $('#amount').val();
+                convertToHKD(amount);
+            });
+
+            $('#convert-to-rub').on('click', function() {
+                var hkdAmount = $('#hkd-amount').val();
+                convertToRUB(hkdAmount);
+            });
+        });
+
+        function loadHKDRate() {
+            $.getJSON('https://www.cbr-xml-daily.ru/daily_json.js')
+                .done(function(data) {
+                    var rate = data.Valute.HKD.Value;
+                    $('#hkd-rate').text('1 HKD = ' + rate.toFixed(2) + ' RUB');
+                })
+                .fail(function() {
+                    console.log('Ошибка при загрузке курса HKD');
+                });
+        }
+
+        function convertToHKD(amount) {
+            $.getJSON('https://www.cbr-xml-daily.ru/daily_json.js')
+                .done(function(data) {
+                    var rate = data.Valute.HKD.Value;
+                    var result = (amount / rate).toFixed(2);
+                    $('#result').text('Результат: ' + result + ' HKD');
+                })
+                .fail(function() {
+                    console.log('Ошибка при конвертации в HKD');
+                });
+        }
+
+        function convertToRUB(hkdAmount) {
+            $.getJSON('https://www.cbr-xml-daily.ru/daily_json.js')
+                .done(function(data) {
+                    var rate = data.Valute.HKD.Value;
+                    var result = (hkdAmount * rate).toFixed(2);
+                    $('#result').text('Результат: ' + result + ' RUB');
+                })
+                .fail(function() {
+                    console.log('Ошибка при конвертации в RUB');
+                });
+        }
+    </script>
+</body>
+</html>

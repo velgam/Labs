@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    font-family: montserrat, sans-serif;
+
+}
+body {
+    margin: 0;
+    font-family: 'montserrat', sans-serif;
+    color: #333;
+
+}
+.header {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для хедера */
+    border-bottom: 1px solid #ddd;
+
+}
+.logo {
+    margin-left: 50px;
+    height: 50px; /* Высота логотипа */
+    margin-bottom: 20px; /* Отступ от логотипа до меню */
+}
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #f8f8f8;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.menu ul li {
+    margin-bottom: 10px;
+}
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+}
+header{
+    font-family: 'montserrat', sans-serif;
+}
+main{
+    font-family: 'montserrat', sans-serif;
+}
+footer{
+    font-family: 'montserrat', sans-serif;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    height: 35px;
+    width: 100%;
+    
+}
+.menu ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+}
+.menu ul li a:hover,
+.menu ul li a.active {
+    background-color: #63548d;
+    color: white;
+}
+
+header{
+    background: linear-gradient(rgb(231, 159, 149), rgb(231, 146, 161));
+}

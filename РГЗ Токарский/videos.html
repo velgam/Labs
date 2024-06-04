@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БАНК САРАТОВ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="fav.ico">
+    <style>
+        button {
+            font-family: 'montserrat', sans-serif;
+            background-color: #63548d;
+            border: none; 
+            color: white; 
+            padding: 7px 15px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px; 
+            cursor: pointer; 
+            transition-duration: 0.4s;
+        }
+        .video-container {
+            border: solid 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Фиксированная ширина */
+            height: 50%; /* Фиксированная высота */
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="logo.png"  class="logo">
+    </header>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li><a href="osnova.html">О компании</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="currency.html">Курс валют</a></li>
+                <li><a href="contacts.html">Контактные данные</a></li>
+                <li><a href="videos.html" class="active">Видео</a></li>
+            </ul>
+        </div>
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/WeVJsW_OmBs?si=e9WvLqt7c9UcSHm2" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 БАНК САРАТОВ. Все права защищены.</p>
+    </footer>
+</body>
+</html>
