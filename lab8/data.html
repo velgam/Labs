@@ -7,17 +7,23 @@
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <link rel="icon" href="../favicon-16x16.png">
         <link rel="icon" href="../favicon-32x32.png">
+        <script src="lab8.js" defer></script>
+        <style>
+            div {
+                color: rgb(4, 4, 111);
+                line-height: 1.5
+            }
+        </style>
     </head>
-
-    <body>
+    <body onload="showDate()">
         <header>
             НГТУ, ФБ, Лабораторная работа 8
         </header>
-
+    
         <main>
-            <li><a href="data.html">Дата</a></li>
+            <div id="current-date"></div>
+            <div id="local-dates"></div>
         </main>
-
         <footer>
             &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
         </footer>
