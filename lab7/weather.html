@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            #weather-forecast {
+                border: 1px solid #ccc;
+                padding: 20px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+        </style>
+        <script>
+            async function getWeatherForecast() {
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+                const response = await fetch(url);
+                const data = await response.json();
+                const today = new Date();
+                const temperatures = data.hourly.temperature_2m;
+                const times = data.hourly.time;
+    
+                const morningTemp = temperatures[times.indexOf(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}T08:00`)];
+                const noonTemp = temperatures[times.indexOf(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}T12:00`)];
+                const eveningTemp = temperatures[times.indexOf(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}T20:00`)];
+    
+                const forecastDiv = document.getElementById('weather-forecast');
+                forecastDiv.innerHTML = `
+                    <h2>Прогноз погоды для Новосибирска</h2>
+                    <p>Утром в 8 часов: ${morningTemp} °C</p>
+                    <p>В полдень в 12 часов: ${noonTemp} °C</p>
+                    <p>Вечером в 20 часов: ${eveningTemp} °C</p>
+                `;
+            }
+        </script>
+    </head>
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+    
+        <main>
+            <button onclick="getWeatherForecast()">Получить прогноз погоды</button>
+            <div id="weather-forecast"></div>
+        </main>
+    
+
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>
