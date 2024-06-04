@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            #euro-rate {
+                border: 1px solid #ccc;
+                padding: 20px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+        </style>
+        <script>
+            async function getEuroExchangeRate() {
+                const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+                const response = await fetch(url);
+                const data = await response.json();
+                const euroRate = data.Valute.EUR.Value;
+                const prevEuroRate = data.Valute.EUR.Previous;
+                const dateStr = data.Date;
+                const date = new Date(dateStr);
+                const prevDate = new Date(date.getTime() - 24 * 60 * 60 * 1000);
+                const rateChange = euroRate - prevEuroRate;
+                const changeMessage = rateChange > 0 ? 'Курс евро поднялся' : 'Курс евро опустился';
+    
+                const euroRateDiv = document.getElementById('euro-rate');
+                euroRateDiv.innerHTML = `
+                    <h2>Курс евро</h2>
+                    <p>Дата запроса: ${dateStr}</p>
+                    <p>Текущий курс: ${euroRate.toFixed(2)} рублей</p>
+                    <p>Курс за ${prevDate.toLocaleDateString()}: ${prevEuroRate.toFixed(2)} рублей</p>
+                    <p>${changeMessage} на ${Math.abs(rateChange.toFixed(2))} рублей</p>
+                    <p>Источник данных: <a href="https://www.cbr-xml-daily.ru/" target="_blank">www.cbr-xml-daily.ru</a></p>
+                `;
+            }
+        </script>
+    </head>
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+    
+        <main>
+            <button onclick="getEuroExchangeRate()">Получить курс евро</button>
+            <div id="euro-rate"></div>
+        </main>
+    
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>

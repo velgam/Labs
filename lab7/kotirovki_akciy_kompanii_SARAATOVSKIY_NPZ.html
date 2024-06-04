@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function showStockPrices() {
+                const dates = [
+                    "03.05.2024", "06.05.2024", "07.05.2024", "08.05.2024", "10.05.2024", "13.05.2024",
+                    "14.05.2024", "15.05.2024", "16.05.2024", "17.05.2024", "20.05.2024"
+                ];
+                const prices = [103.44, 101.04, 103.10, 102.10, 100.52, 100.34, 98.68, 98.06, 99.76, 99.24 ];
+                let table = document.getElementById('stock-table');
+                let sum = 0;
+                let min = prices[0];
+                let max = prices[0];
+    
+                for (let i = 0; i < prices.length; i++) {
+                    let tr = document.createElement('tr');
+    
+                    let dateTd = document.createElement('td');
+                    dateTd.innerText = dates[i];
+                    tr.appendChild(dateTd);
+    
+                    let priceTd = document.createElement('td');
+                    priceTd.innerText = prices[i];
+                    tr.appendChild(priceTd);
+    
+                    let diffTd = document.createElement('td');
+                    if (i === 0) {
+                        diffTd.innerText = "-";
+                    } else {
+                        let diff = prices[i] - prices[i - 1];
+                        diffTd.innerText = diff;
+                    }
+                    tr.appendChild(diffTd);
+    
+                    table.appendChild(tr);
+    
+                    sum += prices[i];
+                    min = Math.min(min, prices[i]);
+                    max = Math.max(max, prices[i]);
+                }
+    
+                let average = sum / prices.length;
+                average = average.toFixed(2);
+                let detailDiv = document.getElementById('detail');
+                detailDiv.innerText = `Среднее значение: ${average}\nМинимальное значение: ${min}\nМаксимальное значение: ${max}`;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+    
+        <main>
+            <button onclick="showStockPrices()">Курс акций САРАТОВСКИЙ НПЗ</button>
+            <table border="1" id="stock-table">
+                <tr>
+                    <th>Дата</th>
+                    <th>Цена акций</th>
+                    <th>Разница</th>
+                </tr>
+            </table>
+            <div id="detail"></div>
+        </main>
+
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+</html>
