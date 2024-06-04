@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Токарский Илья Андреевич. Лабораторная работа 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            .circle {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+                line-height: 30px;
+                margin-right: 5px;
+            }
+            .opacity-block {
+                width: 50px;
+                height: 50px;
+                background-color: green;
+                display: inline-block;
+                margin-right: 5px;
+                text-align: center;
+                line-height: 50px;
+                color: white;
+            }
+        </style>
+        
+        <script>
+            function addNewBlock() {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = 'green';
+                newBlock.style.height = '40px';
+                newBlock.style.width = '100px';
+                newBlock.style.border = '2px solid black';
+                newBlock.style.margin = '10px';
+    
+                document.querySelector('main').appendChild(newBlock);
+            }
+    
+            function addNewBlocks() {
+                let main = document.querySelector('main');
+                let blocksCount = document.getElementById('blocksCount').value;
+                for (let i = 0; i < blocksCount; i++) {
+                    let newBlock = document.createElement('div');
+                    newBlock.style.backgroundColor = 'green';
+                    newBlock.style.height = '40px';
+                    newBlock.innerHTML = `Блок № ${i + 1}: 2*${i}<sup>${i ** 2}</sup> = ${2 * i ** 2}`;
+                    main.appendChild(newBlock);
+                }
+            }
+    
+            function add20_50() {
+                let main = document.querySelector('main');
+                for (let i = 20; i <= 50; i += 2.5) {
+                    let newBlock = document.createElement('div');
+                    newBlock.style.width = '40px';
+                    newBlock.style.border = '1px solid';
+    
+                    newBlock.innerHTML = `${i}`;
+    
+                    main.appendChild(newBlock);
+                }
+            }
+    
+            function add10ToMinus80() {
+                let main = document.querySelector('main');
+                for (let i = 10; i >= -80; i -= 3) {
+                    let circle = document.createElement('div');
+                    circle.classList.add('circle');
+                    circle.textContent = i;
+                    main.appendChild(circle);
+                }
+            }
+    
+            function addOpacityBlocks() {
+                let main = document.querySelector('main');
+                for (let i = 0; i < 10; i++) {
+                    let opacityBlock = document.createElement('div');
+                    opacityBlock.classList.add('opacity-block');
+                    opacityBlock.style.opacity = (i + 1) * 0.1;
+                    opacityBlock.textContent = i + 1;
+                    main.appendChild(opacityBlock);
+                }
+            }
+    
+            function addColoredCircles() {
+                let main = document.querySelector('main');
+                let circlesCount = document.getElementById('circlesCount').value;
+                for (let i = circlesCount; i > 0; i--) {
+                    let circle = document.createElement('div');
+                    circle.classList.add('circle');
+                    circle.textContent = i;
+                    if (i % 2 === 0) {
+                        
+                        circle.style.backgroundColor = 'green';
+                    } else {
+                        circle.style.backgroundColor = 'red';
+                    }
+                    main.appendChild(circle);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+    
+        <main>
+            <button onclick="addNewBlock()">Добавить блок</button>
+            <input type="number" id="blocksCount" placeholder="Количество блоков">
+            <button onclick="addNewBlocks()">Добавить блоки</button>
+            <button onclick="add20_50()">20=>50</button>
+            <button onclick="add10ToMinus80()">10 => -80</button>
+            <button onclick="addOpacityBlocks()">Блоки с opacity</button>
+            <input type="number" id="circlesCount" placeholder="Количество кругов">
+            <button onclick="addColoredCircles()">Цветные круги</button>
+        </main>
+    
+
+        <footer>
+            &copy; Токарский Илья Андреевич, ФБИ-22, 2 курс, 2024 
+        </footer>
+        
+    </body>
+
+
+
+</html>
